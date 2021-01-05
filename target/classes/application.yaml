@@ -1,0 +1,36 @@
+# Spring Boot initialConfiguration
+spring:
+  jpa:
+    show-sql: false
+    generate-ddl: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL94Dialect
+        temp:
+          use_jdbc_metadata_defaults: false
+        default_schema: public
+    hibernate:
+      ddl-auto: update
+
+  profiles:
+    active: ${PROFILE:local}
+app:
+  jwt:
+    expiration: 86400000
+    secret: Mh47cEyENtjz9PCgS4wjPLEmgHZajM
+
+#Hash Secret For FNV1a64
+hash:
+  secret: Mh47cEyENtjz9PC
+
+logging:
+  pattern:
+    console: "%d %-5level %logger : %msg%n"
+  level:
+    org.springframework: info
+    org.hibernate.SQL: info
+
+# Server initialConfiguration
+server:
+  port: 8080
