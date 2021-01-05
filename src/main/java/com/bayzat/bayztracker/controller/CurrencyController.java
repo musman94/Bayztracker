@@ -12,6 +12,8 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Collection;
+import java.util.List;
 
 @RestController
 @CrossOrigin("*")
@@ -33,10 +35,24 @@ public class CurrencyController {
 
     @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/remove", method = RequestMethod.POST)
-    public ResponseEntity removeCurrency(@Valid @RequestBody RemoveCurrencyRequestDto request) {
+    public ResponseEntity removeCurrency(@Valid @RequestParam String name) {
 
-        currencyService.removeCurrency(request);
+        currencyService.removeCurrency(name);
         return responseHelper.okResponse();
     }
 
+
+    @RequestMapping(value = "/get", method = RequestMethod.GET)
+    public ResponseEntity getCurrency(@Valid @RequestParam String name) {
+
+        CurrencyResponse currency = currencyService.getCurrency(name);
+        return responseHelper.okResponse(currency);
+    }
+
+    @RequestMapping(value = "/getAll", method = RequestMethod.GET)
+    public ResponseEntity getCurrencyAll() {
+
+        Collection<CurrencyResponse> currencyList = currencyService.getCurrencyAll();
+        return responseHelper.okResponse(currencyList);
+    }
 }
