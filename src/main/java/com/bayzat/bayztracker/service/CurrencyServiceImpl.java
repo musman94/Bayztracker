@@ -70,6 +70,18 @@ public class CurrencyServiceImpl implements CurrencyService {
 
     @Override
     @Transactional(readOnly = true)
+    public Currency getCurrencyById(Long id) {
+        Optional<Currency> currency = currencyRepository.findById(id);
+
+        if(currency.isEmpty()) {
+            throw new NotFoundException();
+        }
+
+        return currency.get();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
     public Collection<CurrencyResponse> getCurrencyAll() {
         List<Currency> currencyList = currencyRepository.findAll();
 

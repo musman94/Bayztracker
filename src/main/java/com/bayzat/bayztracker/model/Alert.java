@@ -1,7 +1,6 @@
 package com.bayzat.bayztracker.model;
 
 import com.bayzat.bayztracker.enumeration.AlertStatus;
-import com.bayzat.bayztracker.enumeration.UserType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,19 +18,19 @@ public final class Alert extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
-    @OneToOne(cascade = {CascadeType.ALL})
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
+
+    @ManyToOne
     @JoinColumn(name = "currency_id", referencedColumnName = "id")
     private Currency currency;
 
-    @Enumerated(EnumType.STRING)
-    private AlertStatus alertStatus;
-
-    @Column(name = "taget_value")
+    @Column(name = "target_value")
     private Double targetValue;
 
-    @OneToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private User user;
+    @Enumerated(EnumType.STRING)
+    private AlertStatus alertStatus;
 
     @PrePersist
     void preInsert() {
@@ -43,10 +42,10 @@ public final class Alert extends BaseEntity {
     public String toString() {
         return "Alert{" +
                 "id=" + id +
-                ", currency='" + currency + '\'' +
-                ", status='" + alertStatus + '\'' +
-                ", targetValue=" + targetValue +
                 ", user=" + user +
+                ", currency='" + currency + '\'' +
+                ", targetValue=" + targetValue +
+                ", status='" + alertStatus + '\'' +
                 ", createdAt='" + createdAt + '\'' +
                 ", updateAt=" + updatedAt +
                 '}';

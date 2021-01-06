@@ -8,6 +8,7 @@ import com.bayzat.bayztracker.dto.response.JwtResponse;
 import com.bayzat.bayztracker.dto.response.JwtUser;
 import com.bayzat.bayztracker.dto.response.UserResponse;
 import com.bayzat.bayztracker.exception.InvalidParameterException;
+import com.bayzat.bayztracker.exception.NotFoundException;
 import com.bayzat.bayztracker.model.User;
 import com.bayzat.bayztracker.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -75,8 +76,22 @@ public class UserServiceImpl implements UserService {
         throw new InvalidParameterException(USER_ALREADY_EXISTS);
     }
 
+    @Override
+    @Transactional
+    public User getUserById(Long id) {
+        Optional<User> user = userRepository.findById(id);
+
+        if(user.isEmpty()) {
+            throw new NotFoundException();
+        }
+
+        return user.get();
+    }
+
     private boolean checkUserExist(String email) {
         Optional<User> user = userRepository.findByEmail(email);
+
         return user.isPresent();
     }
+
 }

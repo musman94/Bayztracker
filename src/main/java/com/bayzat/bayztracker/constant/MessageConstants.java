@@ -5,6 +5,7 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class MessageConstants {
     public static final String ADD_CURRENCY_SUCCESSFUL_MESSAGE = "CURRENCY_ADDED_SUCCESSFULLY";
+    public static final String ADD_ALERT_SUCCESSFUL_MESSAGE = "ALERT_ADDED_SUCCESSFULLY";
     public static final String ALARM_RESOLVE_SUCCESSFUL_MESSAGE = "ALARM_RESOLVE_SUCCESSFUL_MESSAGE";
     public static final String ADD_STAFF_SUCCESSFUL_MESSAGE = "ADD_STAFF_SUCCESSFUL_MESSAGE";
     public static final String ADD_BUILDING_SUCCESSFUL_MESSAGE = "ADD_BUILDING_SUCCESSFUL_MESSAGE";

@@ -22,6 +22,7 @@ public class ExceptionMessageConstants {
     public static final String PASSWORD_NOT_FOUND_MESSAGE = "PASSWORD_NOT_FOUND_MESSAGE";
     public static final String INVALID_USER_INFO_MESSAGE = "INVALID_USER_INFO_MESSAGE";
     public static final String USER_ALREADY_EXISTS = "USER_ALREADY_EXISTS";
+    public static final String ALERT_ALREADY_EXISTS = "ALERT_ALREADY_EXISTS";
     public static final String SENSOR_ALREADY_EXIST_MESSAGE = "SENSOR_ALREADY_EXIST_MESSAGE";
     public static final String INVALID_VERIFICATION_CODE_MESSAGE = "INVALID_VERIFICATION_CODE_MESSAGE";
 

@@ -2,7 +2,7 @@
 spring:
   jpa:
     show-sql: false
-    generate-ddl: true
+    generate-ddl: false
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     properties:
       hibernate:
@@ -11,7 +11,7 @@ spring:
           use_jdbc_metadata_defaults: false
         default_schema: public
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
 
   profiles:
     active: ${PROFILE:local}
