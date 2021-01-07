@@ -2,7 +2,6 @@ package com.bayzat.bayztracker.service;
 
 import com.bayzat.bayztracker.config.PasswordHelper;
 import com.bayzat.bayztracker.config.jwt.JwtProvider;
-import com.bayzat.bayztracker.config.jwt.JwtUserDetailsService;
 import com.bayzat.bayztracker.dto.request.AddUserRequestDto;
 import com.bayzat.bayztracker.dto.response.JwtResponse;
 import com.bayzat.bayztracker.dto.response.JwtUser;
@@ -22,7 +21,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.Optional;
 
-import static com.bayzat.bayztracker.constant.ExceptionMessageConstants.USER_ALREADY_EXISTS;
+import static com.bayzat.bayztracker.constant.ExceptionMessageConstants.*;
 
 @Service
 @Slf4j
@@ -37,9 +36,6 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private JwtProvider jwtProvider;
-
-    @Autowired
-    private JwtUserDetailsService userDetailsService;
 
     @Autowired
     private PasswordHelper passwordHelper;
@@ -73,7 +69,7 @@ public class UserServiceImpl implements UserService {
             return UserResponse.of(user);
         }
 
-        throw new InvalidParameterException(USER_ALREADY_EXISTS);
+        throw new InvalidParameterException(USER_ALREADY_EXISTS_MESSAGE);
     }
 
     @Override
@@ -82,7 +78,7 @@ public class UserServiceImpl implements UserService {
         Optional<User> user = userRepository.findById(id);
 
         if(user.isEmpty()) {
-            throw new NotFoundException();
+            throw new NotFoundException(USER_NOT_FOUND_MESSAGE);
         }
 
         return user.get();

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-import static com.bayzat.bayztracker.constant.MessageConstants.ADD_ALERT_SUCCESSFUL_MESSAGE;
+import static com.bayzat.bayztracker.constant.MessageConstants.*;
 
 @RestController
 @CrossOrigin("*")
@@ -32,24 +32,24 @@ public class AlertController {
     @RequestMapping(value = "/ack", method = RequestMethod.POST)
     public ResponseEntity ackAlert(@Valid @RequestParam Long id) {
         AlertResponse alert = alertService.ackAlert(id);
-        return responseHelper.okResponse(alert, ADD_ALERT_SUCCESSFUL_MESSAGE);
+        return responseHelper.okResponse(alert, ACK_ALERT_SUCCESSFUL_MESSAGE);
     }
 
     @RequestMapping(value = "/cancel", method = RequestMethod.POST)
     public ResponseEntity cancelAlert(@Valid @RequestParam Long id) {
         AlertResponse alert = alertService.cancelAlert(id);
-        return responseHelper.okResponse(alert, ADD_ALERT_SUCCESSFUL_MESSAGE);
+        return responseHelper.okResponse(alert, CANCEL_ALERT_SUCCESSFUL_MESSAGE);
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.PUT)
     public ResponseEntity updateAlert(@Valid @RequestBody UpdateAlertRequestDto request) {
         AlertResponse alert = alertService.updateAlert(request);
-        return responseHelper.okResponse(alert, ADD_ALERT_SUCCESSFUL_MESSAGE);
+        return responseHelper.okResponse(alert, UPDATE_ALERT_SUCCESSFUL_MESSAGE);
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
     public ResponseEntity deleteAlert(@Valid @RequestParam Long id) {
         AlertResponse alert = alertService.deleteAlert(id);
-        return responseHelper.okResponse(alert, ADD_ALERT_SUCCESSFUL_MESSAGE);
+        return responseHelper.okResponse(alert, DELETE_ALERT_SUCCESSFUL_MESSAGE);
     }
 }

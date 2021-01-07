@@ -4,18 +4,12 @@ import lombok.experimental.UtilityClass;
 
 @UtilityClass
 public class MessageConstants {
-    public static final String ADD_CURRENCY_SUCCESSFUL_MESSAGE = "CURRENCY_ADDED_SUCCESSFULLY";
-    public static final String ADD_ALERT_SUCCESSFUL_MESSAGE = "ALERT_ADDED_SUCCESSFULLY";
-    public static final String ALARM_RESOLVE_SUCCESSFUL_MESSAGE = "ALARM_RESOLVE_SUCCESSFUL_MESSAGE";
-    public static final String ADD_STAFF_SUCCESSFUL_MESSAGE = "ADD_STAFF_SUCCESSFUL_MESSAGE";
-    public static final String ADD_BUILDING_SUCCESSFUL_MESSAGE = "ADD_BUILDING_SUCCESSFUL_MESSAGE";
-    public static final String DROP_BUILDING_STAFF_SUCCESSFUL_MESSAGE = "DROP_BUILDING_STAFF_SUCCESSFUL_MESSAGE";
-    public static final String ADD_ROOM_SUCCESSFUL_MESSAGE = "ADD_ROOM_SUCCESSFUL_MESSAGE";
-    public static final String ADD_SENSOR_SUCCESSFUL_MESSAGE = "ADD_SENSOR_SUCCESSFUL_MESSAGE";
-    public static final String ALARM_CREATED_NOTIFICATION_TITLE = "ALARM_CREATED_NOTIFICATION_TITLE";
-    public static final String ALARM_CREATED_NOTIFICATION_MESSAGE = "ALARM_CREATED_NOTIFICATION_MESSAGE";
-    public static final String ADD_STAFF_EMAIL_SUBJECT = "ADD_STAFF_EMAIL_SUBJECT";
-    public static final String ADD_STAFF_EMAIL_BODY = "ADD_STAFF_EMAIL_BODY";
-    public static final String FORGOT_PASSWORD_EMAIL_BODY = "FORGOT_PASSWORD_EMAIL_BODY";
-    public static final String FORGOT_PASSWORD_EMAIL_SUBJECT = "FORGOT_PASSWORD_EMAIL_SUBJECT";
+
+    public static final String ADD_CURRENCY_SUCCESSFUL_MESSAGE = "Currency successfully added";
+    public static final String ADD_ALERT_SUCCESSFUL_MESSAGE = "Alert successfully added";
+    public static final String ACK_ALERT_SUCCESSFUL_MESSAGE = "Alert successfully acknowledged";
+    public static final String CANCEL_ALERT_SUCCESSFUL_MESSAGE = "Alert successfully cancelled";
+    public static final String UPDATE_ALERT_SUCCESSFUL_MESSAGE = "Alert successfully updated";
+    public static final String DELETE_ALERT_SUCCESSFUL_MESSAGE = "Alert successfully delete";
+
 }

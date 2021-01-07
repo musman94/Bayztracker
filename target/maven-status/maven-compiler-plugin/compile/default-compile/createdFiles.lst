@@ -9,6 +9,7 @@ com/bayzat/bayztracker/exception/UnsupportedCurrencyCreationException.class
 com/bayzat/bayztracker/dto/response/UserResponse$UserResponseBuilder.class
 com/bayzat/bayztracker/enumeration/AlertStatus.class
 com/bayzat/bayztracker/dto/request/AddCurrencyRequestDto$AddCurrencyRequestDtoBuilder.class
+com/bayzat/bayztracker/model/Notification$NotificationBuilder.class
 com/bayzat/bayztracker/dto/request/AddAlertRequestDto.class
 com/bayzat/bayztracker/dto/request/LoginRequestDto.class
 com/bayzat/bayztracker/constant/MessageConstants.class
@@ -22,8 +23,10 @@ com/bayzat/bayztracker/dto/response/AlertResponse$AlertResponseBuilder.class
 com/bayzat/bayztracker/constant/ExceptionMessageConstants.class
 com/bayzat/bayztracker/dto/response/CurrencyResponse$CurrencyResponseBuilder.class
 com/bayzat/bayztracker/exception/InvalidParameterException.class
+com/bayzat/bayztracker/model/Notification.class
 com/bayzat/bayztracker/dto/request/UpdateAlertRequestDto$UpdateAlertRequestDtoBuilder.class
 com/bayzat/bayztracker/dto/request/RemoveCurrencyRequestDto$RemoveCurrencyRequestDtoBuilder.class
+com/bayzat/bayztracker/enumeration/NotificationStatus.class
 com/bayzat/bayztracker/dto/response/AlertResponse.class
 com/bayzat/bayztracker/model/User.class
 com/bayzat/bayztracker/config/PasswordHelper.class
@@ -48,6 +51,7 @@ com/bayzat/bayztracker/service/UserService.class
 com/bayzat/bayztracker/dto/request/AddUserRequestDto.class
 com/bayzat/bayztracker/dto/response/CurrencyResponse.class
 com/bayzat/bayztracker/dto/request/AddAlertRequestDto$AddAlertRequestDtoBuilder.class
+com/bayzat/bayztracker/task/ScheduledTask.class
 com/bayzat/bayztracker/dto/request/RemoveCurrencyRequestDto.class
 com/bayzat/bayztracker/service/UserServiceImpl.class
 com/bayzat/bayztracker/controller/AuthController.class

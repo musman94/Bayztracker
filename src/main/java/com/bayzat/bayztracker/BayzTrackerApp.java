@@ -13,7 +13,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @EnableJpaRepositories(basePackages = "com.bayzat.bayztracker.repository")
 @EnableTransactionManagement
 public class BayzTrackerApp implements WebMvcConfigurer {
-
     public static void main(String[] args) {
         SpringApplication.run(BayzTrackerApp.class, args);
     }

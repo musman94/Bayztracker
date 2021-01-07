@@ -15,6 +15,21 @@ create table if not exists currency
 alter table currency
     owner to postgres;
 
+create table if not exists notification
+(
+    id          bigint not null,
+    created_at  timestamp,
+    updated_at  timestamp,
+    currency_id varchar(255),
+    status      varchar(255),
+    user_id     varchar(255),
+    constraint notification_pkey
+        primary key (id)
+);
+
+alter table notification
+    owner to postgres;
+
 create table if not exists "user"
 (
     id         bigint not null,
@@ -45,17 +60,21 @@ create table if not exists alert
     constraint alert_pkey
         primary key (id),
     constraint fk52sopfgee3ban627mcrve6bd
-        foreign key (currency_id) references currency,
+        foreign key (currency_id) references currency
+            on delete cascade,
     constraint fk8aibapj4xxayfescf8fkidap2
         foreign key (user_id) references "user"
+            on delete cascade
 );
+
+alter table alert
+    owner to postgres;
 
 drop function if exists trigger_alert() cascade;
 
 create function trigger_alert() returns trigger
     language plpgsql
 as
-
 'begin
     update alert a
     set    alert_status = ''TRIGGERED''
@@ -66,8 +85,34 @@ end';
 
 alter function trigger_alert() owner to postgres;
 
-drop trigger if exists currency_price_update on currency;
-
 create trigger currency_price_update
     after insert or update on currency
     for each row execute procedure trigger_alert();
+
+drop function if exists create_notification_object() cascade;
+
+create function create_notification_object() returns trigger
+    language plpgsql
+as
+
+'begin
+    if NEW.alert_status = ''TRIGGERED'' then
+        insert into notification(id, user_id, currency_id, status, created_at, updated_at)
+        values (
+                   nextval(''hibernate_sequence''),
+                   OLD.user_id,
+                   OLD.currency_id,
+                   ''NEW'',
+                   now(),
+                   now()
+               );
+    end if;
+
+    RETURN NEW;
+end';
+
+alter function create_notification_object() owner to postgres;
+
+create trigger alert_is_triggered
+    after update on alert
+    for each row execute procedure create_notification_object();

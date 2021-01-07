@@ -17,8 +17,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.util.Optional;
 
-import static com.bayzat.bayztracker.constant.ExceptionMessageConstants.ALERT_ALREADY_EXISTS;
-import static com.bayzat.bayztracker.constant.ExceptionMessageConstants.INVALID_PARAMETER_MESSAGE;
+import static com.bayzat.bayztracker.constant.ExceptionMessageConstants.*;
 
 @Service
 @Slf4j
@@ -50,7 +49,7 @@ public class AlertServiceImpl implements AlertService {
             return AlertResponse.of(alert);
         }
 
-        throw new InvalidParameterException(ALERT_ALREADY_EXISTS);
+        throw new InvalidParameterException(ALERT_ALREADY_EXISTS_MESSAGE);
     }
 
     @Override
@@ -59,7 +58,7 @@ public class AlertServiceImpl implements AlertService {
         Alert alert = getAlertById(id);
 
         if(alert.getAlertStatus() != AlertStatus.TRIGGERED) {
-            throw new InvalidParameterException("Only a triggered alert can be acknowledged");
+            throw new InvalidParameterException(CANNOT_BE_ACKED_MESSAGE);
         }
 
         alert.setAlertStatus(AlertStatus.ACKED);
@@ -76,7 +75,7 @@ public class AlertServiceImpl implements AlertService {
         Alert alert = getAlertById(id);
 
         if(alert.getAlertStatus() != AlertStatus.NEW) {
-            throw new InvalidParameterException("The alert cannot be cancelled after it has been triggered");
+            throw new InvalidParameterException(CANNOT_BE_CANCELED_MESSAGE);
         }
 
         alert.setAlertStatus(AlertStatus.CANCELLED);
@@ -124,7 +123,7 @@ public class AlertServiceImpl implements AlertService {
         Optional<Alert> alert = alertRepository.findById(id);
 
         if(alert.isEmpty()) {
-            throw new NotFoundException();
+            throw new NotFoundException(ALERT_NOT_FOUND_MESSAGE);
         }
 
         return alert.get();

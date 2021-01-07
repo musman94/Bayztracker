@@ -18,6 +18,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
+import static com.bayzat.bayztracker.constant.ExceptionMessageConstants.CURRENCY_NOT_FOUND_MESSAGE;
 import static com.bayzat.bayztracker.constant.ExceptionMessageConstants.UNSUPPORTED_CURRENCY_MESSAGE;
 
 @Service
@@ -50,7 +51,7 @@ public class CurrencyServiceImpl implements CurrencyService {
         Optional<Currency> currency = currencyRepository.findByName(name);
 
         if(currency.isEmpty()) {
-            throw new NotFoundException();
+            throw new NotFoundException(CURRENCY_NOT_FOUND_MESSAGE);
         }
 
         currencyRepository.delete(currency.get());
@@ -62,7 +63,7 @@ public class CurrencyServiceImpl implements CurrencyService {
         Optional<Currency> currency = currencyRepository.findByName(name);
 
         if(currency.isEmpty()) {
-            throw new NotFoundException();
+            throw new NotFoundException(CURRENCY_NOT_FOUND_MESSAGE);
         }
 
         return CurrencyResponse.of(currency.get());
@@ -74,7 +75,7 @@ public class CurrencyServiceImpl implements CurrencyService {
         Optional<Currency> currency = currencyRepository.findById(id);
 
         if(currency.isEmpty()) {
-            throw new NotFoundException();
+            throw new NotFoundException(CURRENCY_NOT_FOUND_MESSAGE);
         }
 
         return currency.get();

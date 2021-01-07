@@ -13,16 +13,19 @@ spring:
     hibernate:
       ddl-auto: none
 
-  profiles:
-    active: ${PROFILE:local}
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${RDS_HOSTNAME:localhost}:${RDS_PORT:5432}/${RDS_DB_NAME:postgres}
+    username: ${RDS_USERNAME:postgres}
+    password: ${RDS_PASSWORD:postgres}
+
+    initialization-mode: always
+    schema: classpath:/schema.sql
+
 app:
   jwt:
     expiration: 86400000
     secret: Mh47cEyENtjz9PCgS4wjPLEmgHZajM
-
-#Hash Secret For FNV1a64
-hash:
-  secret: Mh47cEyENtjz9PC
 
 logging:
   pattern:
