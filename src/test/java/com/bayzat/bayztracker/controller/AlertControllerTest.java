@@ -53,7 +53,7 @@ public class AlertControllerTest {
         alertResponse.setUserId(1L);
         alertResponse.setCurrencyId(2L);
         alertResponse.setTargetValue(16.0);
-        alertResponse.setAlertStatus(AlertStatus.NEW);
+        alertResponse.setStatus(AlertStatus.NEW);
 
         addAlertRequestDto = new AddAlertRequestDto();
         addAlertRequestDto.setUserId(1L);
@@ -72,7 +72,7 @@ public class AlertControllerTest {
     public void testAddAlert() throws Exception {
         given(alertService.addAlert(addAlertRequestDto)).willReturn(alertResponse);
 
-        this.mockMvc.perform(post("/alert/add")
+        this.mockMvc.perform(post("/api/alert/add")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(addAlertRequestDto)))
                 .andExpect(status().isOk())
@@ -80,7 +80,7 @@ public class AlertControllerTest {
                 .andExpect(jsonPath("$.data.userId", is(alertResponse.getUserId().intValue())))
                 .andExpect( jsonPath("$.data.currencyId", is(alertResponse.getCurrencyId().intValue())))
                 .andExpect(jsonPath("$.data.targetValue", is(alertResponse.getTargetValue())))
-                .andExpect(jsonPath("$.data.alertStatus", is(alertResponse.getAlertStatus().toString())))
+                .andExpect(jsonPath("$.data.status", is(alertResponse.getStatus().toString())))
                 .andExpect(jsonPath("$.message", is(ADD_ALERT_SUCCESSFUL_MESSAGE)))
                 .andExpect(jsonPath("$.error", is(false)));
     }
@@ -90,16 +90,16 @@ public class AlertControllerTest {
     public void testAckAlert() throws Exception {
         Long alertId = 0L;
 
-        alertResponse.setAlertStatus(AlertStatus.ACKED);
+        alertResponse.setStatus(AlertStatus.ACKED);
         given(alertService.ackAlert(alertId)).willReturn(alertResponse);
 
-        this.mockMvc.perform(post("/alert/ack").param("id", alertId.toString()))
+        this.mockMvc.perform(post("/api/alert/ack").param("id", alertId.toString()))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.data.id", is(alertResponse.getId().intValue())))
                 .andExpect(jsonPath("$.data.userId", is(alertResponse.getUserId().intValue())))
                 .andExpect(jsonPath("$.data.currencyId", is(alertResponse.getCurrencyId().intValue())))
                 .andExpect(jsonPath("$.data.targetValue", is(alertResponse.getTargetValue())))
-                .andExpect(jsonPath("$.data.alertStatus", is(alertResponse.getAlertStatus().toString())))
+                .andExpect(jsonPath("$.data.status", is(alertResponse.getStatus().toString())))
                 .andExpect(jsonPath("$.message", is(ACK_ALERT_SUCCESSFUL_MESSAGE)))
                 .andExpect(jsonPath("$.error", is(false)));
     }
@@ -109,16 +109,16 @@ public class AlertControllerTest {
     public void testCancelAlert() throws Exception {
         Long alertId = 0L;
 
-        alertResponse.setAlertStatus(AlertStatus.CANCELLED);
+        alertResponse.setStatus(AlertStatus.CANCELLED);
         given(alertService.cancelAlert(alertId)).willReturn(alertResponse);
 
-        this.mockMvc.perform(post("/alert/cancel").param("id", alertId.toString()))
+        this.mockMvc.perform(post("/api/alert/cancel").param("id", alertId.toString()))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.data.id", is(alertResponse.getId().intValue())))
                 .andExpect(jsonPath("$.data.userId", is(alertResponse.getUserId().intValue())))
                 .andExpect(jsonPath("$.data.currencyId", is(alertResponse.getCurrencyId().intValue())))
                 .andExpect(jsonPath("$.data.targetValue", is(alertResponse.getTargetValue())))
-                .andExpect(jsonPath("$.data.alertStatus", is(alertResponse.getAlertStatus().toString())))
+                .andExpect(jsonPath("$.data.status", is(alertResponse.getStatus().toString())))
                 .andExpect(jsonPath("$.message", is(CANCEL_ALERT_SUCCESSFUL_MESSAGE)))
                 .andExpect(jsonPath("$.error", is(false)));
     }
@@ -130,7 +130,7 @@ public class AlertControllerTest {
 
         alertResponse.setTargetValue(18.0);
 
-        this.mockMvc.perform(put("/alert/update")
+        this.mockMvc.perform(put("/api/alert/update")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(updateAlertRequestDto)))
                 .andExpect(status().isOk())
@@ -138,7 +138,7 @@ public class AlertControllerTest {
                 .andExpect(jsonPath("$.data.userId", is(alertResponse.getUserId().intValue())))
                 .andExpect( jsonPath("$.data.currencyId", is(alertResponse.getCurrencyId().intValue())))
                 .andExpect(jsonPath("$.data.targetValue", is(alertResponse.getTargetValue())))
-                .andExpect(jsonPath("$.data.alertStatus", is(alertResponse.getAlertStatus().toString())))
+                .andExpect(jsonPath("$.data.status", is(alertResponse.getStatus().toString())))
                 .andExpect(jsonPath("$.message", is(UPDATE_ALERT_SUCCESSFUL_MESSAGE)))
                 .andExpect(jsonPath("$.error", is(false)));
     }
@@ -150,13 +150,13 @@ public class AlertControllerTest {
 
         given(alertService.deleteAlert(alertId)).willReturn(alertResponse);
 
-        this.mockMvc.perform(delete("/alert/delete").param("id", alertId.toString()))
+        this.mockMvc.perform(delete("/api/alert/delete").param("id", alertId.toString()))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.data.id", is(alertResponse.getId().intValue())))
                 .andExpect(jsonPath("$.data.userId", is(alertResponse.getUserId().intValue())))
                 .andExpect(jsonPath("$.data.currencyId", is(alertResponse.getCurrencyId().intValue())))
                 .andExpect(jsonPath("$.data.targetValue", is(alertResponse.getTargetValue())))
-                .andExpect(jsonPath("$.data.alertStatus", is(alertResponse.getAlertStatus().toString())))
+                .andExpect(jsonPath("$.data.status", is(alertResponse.getStatus().toString())))
                 .andExpect(jsonPath("$.message", is(DELETE_ALERT_SUCCESSFUL_MESSAGE)))
                 .andExpect(jsonPath("$.error", is(false)));
     }

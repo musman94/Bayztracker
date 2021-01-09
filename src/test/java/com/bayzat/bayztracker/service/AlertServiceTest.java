@@ -69,14 +69,14 @@ public class AlertServiceTest {
         alert.setUser(user);
         alert.setCurrency(currency);
         alert.setTargetValue(16.0);
-        alert.setAlertStatus(AlertStatus.NEW);
+        alert.setStatus(AlertStatus.NEW);
 
         alertResponse = new AlertResponse();
         alertResponse.setId(0L);
         alertResponse.setUserId(user.getId());
         alertResponse.setCurrencyId(currency.getId());
         alertResponse.setTargetValue(16.0);
-        alertResponse.setAlertStatus(AlertStatus.NEW);
+        alertResponse.setStatus(AlertStatus.NEW);
 
         addAlertRequestDto = new AddAlertRequestDto();
         addAlertRequestDto.setUserId(1L);
@@ -116,19 +116,19 @@ public class AlertServiceTest {
 
     @Test
     public void testAckAlert() {
-        alert.setAlertStatus(AlertStatus.TRIGGERED);
+        alert.setStatus(AlertStatus.TRIGGERED);
 
         when(alertRepository.findById(alert.getId())).thenReturn(java.util.Optional.ofNullable(alert));
         when(alertRepository.save(alert)).thenReturn(alert);
 
-        alertResponse.setAlertStatus(AlertStatus.ACKED);
+        alertResponse.setStatus(AlertStatus.ACKED);
         Assert.assertEquals(alertResponse, alertService.ackAlert(alert.getId()));
 
     }
 
     @Test(expected = InvalidParameterException.class)
     public void testAckAlertThrowsException() {
-        alert.setAlertStatus(AlertStatus.NEW);
+        alert.setStatus(AlertStatus.NEW);
 
         when(alertRepository.findById(alert.getId())).thenReturn(java.util.Optional.ofNullable(alert));
 
@@ -137,18 +137,18 @@ public class AlertServiceTest {
 
     @Test
     public void testCancelAlert() {
-        alert.setAlertStatus(AlertStatus.NEW);
+        alert.setStatus(AlertStatus.NEW);
 
         when(alertRepository.findById(alert.getId())).thenReturn(java.util.Optional.ofNullable(alert));
         when(alertRepository.save(alert)).thenReturn(alert);
 
-        alertResponse.setAlertStatus(AlertStatus.CANCELLED);
+        alertResponse.setStatus(AlertStatus.CANCELLED);
         Assert.assertEquals(alertResponse, alertService.cancelAlert(alert.getId()));
     }
 
     @Test(expected = InvalidParameterException.class)
     public void testCancelAlertThrowsException() {
-        alert.setAlertStatus(AlertStatus.TRIGGERED);
+        alert.setStatus(AlertStatus.TRIGGERED);
 
         when(alertRepository.findById(alert.getId())).thenReturn(java.util.Optional.ofNullable(alert));
 
@@ -158,7 +158,7 @@ public class AlertServiceTest {
     @Test
     public void testUpdateAlert() {
         alert.setTargetValue(18.0);
-        alert.setAlertStatus(AlertStatus.NEW);
+        alert.setStatus(AlertStatus.NEW);
 
         alertResponse.setTargetValue(18.0);
 

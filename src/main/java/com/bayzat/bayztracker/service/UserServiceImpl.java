@@ -28,17 +28,21 @@ import java.util.Optional;
 @Transactional
 public class UserServiceImpl implements UserService {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+
+    private final AuthenticationManager authenticationManager;
+
+    private final JwtProvider jwtProvider;
+
+    private final PasswordHelper passwordHelper;
 
     @Autowired
-    private AuthenticationManager authenticationManager;
-
-    @Autowired
-    private JwtProvider jwtProvider;
-
-    @Autowired
-    private PasswordHelper passwordHelper;
+    public UserServiceImpl(UserRepository userRepository, AuthenticationManager authenticationManager, JwtProvider jwtProvider, PasswordHelper passwordHelper) {
+        this.userRepository = userRepository;
+        this.authenticationManager = authenticationManager;
+        this.jwtProvider = jwtProvider;
+        this.passwordHelper = passwordHelper;
+    }
 
     @Override
     @Transactional
@@ -61,7 +65,7 @@ public class UserServiceImpl implements UserService {
                     .name(request.getName())
                     .cipher(passwordHelper.encode(request.getPassword()))
                     .email(request.getEmail())
-                    .type(request.getUserType())
+                    .type(request.getType())
                     .build();
 
             user = userRepository.save(user);

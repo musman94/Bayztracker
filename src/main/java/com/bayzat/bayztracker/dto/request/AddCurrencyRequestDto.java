@@ -21,4 +21,5 @@ public class AddCurrencyRequestDto {
 
     @NotNull
     private Double currentPrice;
+
 }

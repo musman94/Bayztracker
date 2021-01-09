@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class JwtUser {
+
     private  UserResponse userDetails;
     private  JwtResponse jwt;
 

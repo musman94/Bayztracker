@@ -53,7 +53,7 @@ create table if not exists alert
     id           bigint not null,
     created_at   timestamp,
     updated_at   timestamp,
-    alert_status varchar(255),
+    status varchar(255),
     target_value double precision,
     currency_id  bigint,
     user_id      bigint,
@@ -77,8 +77,8 @@ create function trigger_alert() returns trigger
 as
 'begin
     update alert a
-    set    alert_status = ''TRIGGERED''
-    where  (a.currency_id = NEW.id) and (a.alert_status = ''NEW'') AND (a.target_value <= NEW.current_price);
+    set    status = ''TRIGGERED''
+    where  (a.currency_id = NEW.id) and (a.status = ''NEW'') AND (a.target_value <= NEW.current_price);
 
     RETURN NEW;
 end';
@@ -96,7 +96,7 @@ create function create_notification_object() returns trigger
 as
 
 'begin
-    if NEW.alert_status = ''TRIGGERED'' then
+    if NEW.status = ''TRIGGERED'' then
         insert into notification(id, user_id, currency_id, status, created_at, updated_at)
         values (
                    nextval(''hibernate_sequence''),

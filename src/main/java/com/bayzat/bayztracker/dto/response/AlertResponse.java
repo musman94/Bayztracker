@@ -26,7 +26,7 @@ public final class AlertResponse {
 
     private Double targetValue;
 
-    private AlertStatus alertStatus;
+    private AlertStatus status;
 
     public static AlertResponse of(Alert alert) {
         AlertResponseBuilder builder = AlertResponse.builder()
@@ -34,7 +34,7 @@ public final class AlertResponse {
                 .userId(alert.getUser().getId())
                 .currencyId(alert.getCurrency().getId())
                 .targetValue(alert.getTargetValue())
-                .alertStatus(alert.getAlertStatus());
+                .status(alert.getStatus());
 
         return builder.build();
     }

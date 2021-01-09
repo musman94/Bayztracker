@@ -14,13 +14,18 @@ import javax.validation.Valid;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/auth")
+@RequestMapping("/api/auth")
 public class AuthController {
-    @Autowired
-    private ResponseHelper responseHelper;
+
+    private final ResponseHelper responseHelper;
+
+    private final UserService userService;
 
     @Autowired
-    private UserService userService;
+    public AuthController(ResponseHelper responseHelper, UserService userService) {
+        this.responseHelper = responseHelper;
+        this.userService = userService;
+    }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity login(@Valid @RequestBody LoginRequestDto requestDto) {

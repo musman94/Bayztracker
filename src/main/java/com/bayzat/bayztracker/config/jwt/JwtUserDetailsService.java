@@ -14,25 +14,17 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class JwtUserDetailsService implements UserDetailsService {
 
+    private final UserRepository userRepository;
+
     @Autowired
-    private UserRepository userRepository;
+    public JwtUserDetailsService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Transactional(readOnly = true)
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return userRepository.findByEmail(username).orElseThrow(
                 () -> new UsernameNotFoundException(username));
-    }
-
-    @Transactional(readOnly = true)
-    public User getCurrentUser() {
-        try {
-            UserDetails currentUserDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-            String email = currentUserDetails.getUsername();
-            return userRepository.findByEmail(email).orElseThrow(
-                    () -> new UsernameNotFoundException(email));
-        } catch (NullPointerException e) {
-            throw new NotAuthorizedException();
-        }
     }
 }

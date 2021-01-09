@@ -54,7 +54,7 @@ public class AuthControllerTest {
         addUserRequestDto.setName("testUser");
         addUserRequestDto.setEmail("testUser@gmail.com");
         addUserRequestDto.setPassword("password");
-        addUserRequestDto.setUserType(UserType.ADMIN);
+        addUserRequestDto.setType(UserType.ADMIN);
 
         userResponse = new UserResponse();
         userResponse.setId(0L);
@@ -77,7 +77,7 @@ public class AuthControllerTest {
     public void testSignUpUser() throws Exception {
         given(userService.signUp(addUserRequestDto)).willReturn(userResponse);
 
-        this.mockMvc.perform(post("/auth/signUp")
+        this.mockMvc.perform(post("/api/auth/signUp")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(addUserRequestDto)))
                 .andExpect(status().isOk())
@@ -92,7 +92,7 @@ public class AuthControllerTest {
     public void testLoginUser() throws Exception {
         given(userService.login(loginRequestDto)).willReturn(jwtUser);
 
-        this.mockMvc.perform(post("/auth/login")
+        this.mockMvc.perform(post("/api/auth/login")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(loginRequestDto)))
                 .andExpect(status().isOk())

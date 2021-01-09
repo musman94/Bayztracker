@@ -7,10 +7,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ResponseHelper {
-    public ResponseEntity okResponse() {
-        Response response = new Response(null, null, false);
-        return new ResponseEntity(response, HttpStatus.OK);
-    }
 
     public <T> ResponseEntity okResponse(T data) {
         Response response = new Response(data, null, false);

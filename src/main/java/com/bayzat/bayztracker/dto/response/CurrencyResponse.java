@@ -16,6 +16,7 @@ import java.util.stream.Collectors;
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CurrencyResponse {
+
     private Long id;
 
     private String name;

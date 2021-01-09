@@ -72,7 +72,7 @@ public class CurrencyControllerTest {
     public void testAddCurrency() throws Exception {
         given(currencyService.addCurrency(addCurrencyRequestDto)).willReturn(currencyResponse);
 
-        this.mockMvc.perform(post("/currency/add")
+        this.mockMvc.perform(post("/api/currency/add")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(addCurrencyRequestDto)))
                 .andExpect(status().isOk())
@@ -91,7 +91,7 @@ public class CurrencyControllerTest {
 
         given(currencyService.removeCurrency(currencyName)).willReturn(currencyResponse);
 
-        this.mockMvc.perform(delete("/currency/remove").param("name", currencyName))
+        this.mockMvc.perform(delete("/api/currency/remove").param("name", currencyName))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.data.id", is(currencyResponse.getId().intValue())))
                 .andExpect(jsonPath("$.data.name", is(currencyResponse.getName())))
@@ -108,7 +108,7 @@ public class CurrencyControllerTest {
 
         given(currencyService.getCurrencyByName(currencyName)).willReturn(currencyResponse);
 
-        this.mockMvc.perform(get("/currency/get").param("name", currencyName))
+        this.mockMvc.perform(get("/api/currency/get").param("name", currencyName))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.data.id", is(currencyResponse.getId().intValue())))
                 .andExpect(jsonPath("$.data.name", is(currencyResponse.getName())))
@@ -127,7 +127,7 @@ public class CurrencyControllerTest {
 
         given(currencyService.getCurrencyAll()).willReturn(currencyResponseList);
 
-        this.mockMvc.perform(get("/currency/getAll"))
+        this.mockMvc.perform(get("/api/currency/getAll"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.data[0].id", is(currencyResponse.getId().intValue())))
                 .andExpect(jsonPath("$.data[0].name", is(currencyResponse.getName())))

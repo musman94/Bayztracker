@@ -26,9 +26,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class SecurityConfig extends WebSecurityConfigurerAdapter implements Ordered {
 
     private static final String[] AUTH_WHITELIST = {
-            "auth/login",
-            "auth/signUp",
-            "/test"
+            "api/auth/login",
+            "api/auth/signUp"
     };
 
     private final JwtAuthEntryPoint unauthorizedHandler;
@@ -73,8 +72,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements Orde
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/auth/login").permitAll()
-                .antMatchers("/auth/signUp").permitAll()
+                .antMatchers("/api/auth/login").permitAll()
+                .antMatchers("/api/auth/signUp").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()

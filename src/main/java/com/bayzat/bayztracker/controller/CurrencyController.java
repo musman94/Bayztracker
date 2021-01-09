@@ -15,13 +15,18 @@ import java.util.Collection;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/currency")
+@RequestMapping("/api/currency")
 public class CurrencyController {
-    @Autowired
-    private ResponseHelper responseHelper;
+
+    private final ResponseHelper responseHelper;
+
+    private final CurrencyService currencyService;
 
     @Autowired
-    private CurrencyService currencyService;
+    public CurrencyController(ResponseHelper responseHelper, CurrencyService currencyService) {
+        this.responseHelper = responseHelper;
+        this.currencyService = currencyService;
+    }
 
     @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/add", method = RequestMethod.POST)

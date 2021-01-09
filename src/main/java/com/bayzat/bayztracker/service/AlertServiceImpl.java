@@ -22,14 +22,19 @@ import static com.bayzat.bayztracker.constant.ExceptionMessageConstants.*;
 @Service
 @Slf4j
 public class AlertServiceImpl implements AlertService {
-    @Autowired
-    UserService userService;
+
+    private final UserService userService;
+
+    private final CurrencyService currencyService;
+
+    private final AlertRepository alertRepository;
 
     @Autowired
-    CurrencyService currencyService;
-
-    @Autowired
-    AlertRepository alertRepository;
+    public AlertServiceImpl(UserService userService, CurrencyService currencyService, AlertRepository alertRepository) {
+        this.userService = userService;
+        this.currencyService = currencyService;
+        this.alertRepository = alertRepository;
+    }
 
     @Override
     @Transactional
@@ -57,11 +62,11 @@ public class AlertServiceImpl implements AlertService {
     public AlertResponse ackAlert(Long id) {
         Alert alert = getAlertById(id);
 
-        if(alert.getAlertStatus() != AlertStatus.TRIGGERED) {
+        if(alert.getStatus() != AlertStatus.TRIGGERED) {
             throw new InvalidParameterException(CANNOT_BE_ACKED_MESSAGE);
         }
 
-        alert.setAlertStatus(AlertStatus.ACKED);
+        alert.setStatus(AlertStatus.ACKED);
 
         alertRepository.save(alert);
 
@@ -74,11 +79,11 @@ public class AlertServiceImpl implements AlertService {
     public AlertResponse cancelAlert(Long id) {
         Alert alert = getAlertById(id);
 
-        if(alert.getAlertStatus() != AlertStatus.NEW) {
+        if(alert.getStatus() != AlertStatus.NEW) {
             throw new InvalidParameterException(CANNOT_BE_CANCELED_MESSAGE);
         }
 
-        alert.setAlertStatus(AlertStatus.CANCELLED);
+        alert.setStatus(AlertStatus.CANCELLED);
 
         alertRepository.save(alert);
 

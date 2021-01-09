@@ -13,6 +13,7 @@ import javax.validation.constraints.NotNull;
 @Data
 @Builder
 public class AddUserRequestDto {
+
     @NotNull
     private String name;
 
@@ -22,6 +23,6 @@ public class AddUserRequestDto {
     @NotNull
     private String email;
 
-    private UserType userType;
+    private UserType type;
 }
 

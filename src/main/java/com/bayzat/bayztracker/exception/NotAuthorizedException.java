@@ -8,10 +8,6 @@ public class NotAuthorizedException extends RuntimeException {
         super(ExceptionMessageConstants.NOT_AUTHORIZED_MESSAGE);
     }
 
-    public NotAuthorizedException(Throwable cause) {
-        super(ExceptionMessageConstants.NOT_AUTHORIZED_MESSAGE, cause);
-    }
-
     public NotAuthorizedException(String message) {
         super(message);
     }

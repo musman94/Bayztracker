@@ -42,7 +42,7 @@ public class UserServiceTest {
         addUserRequestDto.setName("testUser");
         addUserRequestDto.setEmail("testUser@gmail.com");
         addUserRequestDto.setPassword("password");
-        addUserRequestDto.setUserType(UserType.ADMIN);
+        addUserRequestDto.setType(UserType.ADMIN);
 
         userResponse = new UserResponse();
         userResponse.setId(0L);

@@ -14,8 +14,12 @@ import java.util.Optional;
 @Slf4j
 public class NotificationServiceImpl implements NotificationService {
 
+    private final NotificationRepository notificationRepository;
+
     @Autowired
-    NotificationRepository notificationRepository;
+    public NotificationServiceImpl(NotificationRepository notificationRepository) {
+        this.notificationRepository = notificationRepository;
+    }
 
     public void sendNotifications() {
         Optional<List<Notification>> unsentNotifications = notificationRepository.findAllByStatusEquals(NotificationStatus.NEW);

@@ -34,12 +34,12 @@ public final class Alert extends BaseEntity {
     private Double targetValue;
 
     @Enumerated(EnumType.STRING)
-    private AlertStatus alertStatus;
+    private AlertStatus status;
 
     @PrePersist
     void preInsert() {
-        if (this.alertStatus == null)
-            this.alertStatus = AlertStatus.NEW;
+        if (this.status == null)
+            this.status = AlertStatus.NEW;
     }
 
     @Override
@@ -49,7 +49,7 @@ public final class Alert extends BaseEntity {
                 ", user=" + user +
                 ", currency='" + currency + '\'' +
                 ", targetValue=" + targetValue +
-                ", status='" + alertStatus + '\'' +
+                ", status='" + status + '\'' +
                 ", createdAt='" + createdAt + '\'' +
                 ", updateAt=" + updatedAt +
                 '}';

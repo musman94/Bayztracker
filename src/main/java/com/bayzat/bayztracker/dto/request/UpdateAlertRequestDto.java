@@ -12,6 +12,7 @@ import javax.validation.constraints.NotNull;
 @Data
 @Builder
 public class UpdateAlertRequestDto {
+
     @NotNull
     private Long alertId;
 

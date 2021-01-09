@@ -10,8 +10,12 @@ public class ScheduledTask {
     private static final int ONE_SECOND = 1000;
     private static final int THIRTY_SECONDS = 30 * ONE_SECOND;
 
+    private final NotificationService notificationService;
+
     @Autowired
-    NotificationService notificationService;
+    public ScheduledTask(NotificationService notificationService) {
+        this.notificationService = notificationService;
+    }
 
     @Scheduled(fixedRate = THIRTY_SECONDS)
     public void sendAlertNotifications() {

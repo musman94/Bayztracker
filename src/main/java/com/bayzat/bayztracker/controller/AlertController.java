@@ -15,13 +15,18 @@ import static com.bayzat.bayztracker.constant.MessageConstants.*;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/alert")
+@RequestMapping("/api/alert")
 public class AlertController {
-    @Autowired
-    private ResponseHelper responseHelper;
+
+    private final ResponseHelper responseHelper;
+
+    private final AlertService alertService;
 
     @Autowired
-    private AlertService alertService;
+    public AlertController(ResponseHelper responseHelper, AlertService alertService) {
+        this.responseHelper = responseHelper;
+        this.alertService = alertService;
+    }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     public ResponseEntity addAlert(@Valid @RequestBody AddAlertRequestDto request) {

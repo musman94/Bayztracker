@@ -13,6 +13,7 @@ import javax.validation.constraints.NotNull;
 @Data
 @Builder
 public class AddAlertRequestDto {
+
     @NotNull
     private Long userId;
 
@@ -22,5 +23,5 @@ public class AddAlertRequestDto {
     @NotNull
     private Double targetValue;
 
-    private AlertStatus alertStatus;
+    private AlertStatus status;
 }
