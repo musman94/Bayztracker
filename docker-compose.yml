@@ -27,13 +27,4 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://bayztracker-db:5432/postgres?createDatabaseIfNotExist=true
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: postgres
-     # - DATABASE_HOST=localhost
-     # - DATABASE_USER=postgres
-     # - DATABASE_PASSWORD=postgres
-     # - DATABASE_NAME=postgres
-     # - DATABASE_PORT=5432
 
-      #- DATABASE_URI= postgresql://bayztracker-database:5432/postgres
-    #environment:
-    #  SPRING_DATA_POSTGRES_URI: postgresql://bayztracker-database:5432/postgres
-    #  SPRING_DATA_POSTGRES_HOST: bayztracker-database
