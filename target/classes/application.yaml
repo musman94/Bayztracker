@@ -2,7 +2,7 @@
 spring:
   jpa:
     show-sql: false
-    generate-ddl: false
+    generate-ddl: true
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     properties:
       hibernate:
@@ -11,16 +11,13 @@ spring:
           use_jdbc_metadata_defaults: false
         default_schema: public
     hibernate:
-      ddl-auto: none
+      ddl-auto: create
 
-  datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://${RDS_HOSTNAME:localhost}:${RDS_PORT:5432}/${RDS_DB_NAME:postgres}
-    username: ${RDS_USERNAME:postgres}
-    password: ${RDS_PASSWORD:postgres}
+    #initialization-mode: always
+    #schema: classpath:/schema.sql
 
-    initialization-mode: always
-    schema: classpath:/schema.sql
+  profiles:
+    active: ${PROFILE:prod}
 
 app:
   jwt:

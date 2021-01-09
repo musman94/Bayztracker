@@ -16,7 +16,6 @@ public class JwtProvider {
     @Value("${app.jwt.secret}")
     private String jwtSecret;
 
-
     @Value("${app.jwt.expiration}")
     private int jwtExpiration;
 

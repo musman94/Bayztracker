@@ -25,7 +25,6 @@ com/bayzat/bayztracker/dto/response/CurrencyResponse$CurrencyResponseBuilder.cla
 com/bayzat/bayztracker/exception/InvalidParameterException.class
 com/bayzat/bayztracker/model/Notification.class
 com/bayzat/bayztracker/dto/request/UpdateAlertRequestDto$UpdateAlertRequestDtoBuilder.class
-com/bayzat/bayztracker/dto/request/RemoveCurrencyRequestDto$RemoveCurrencyRequestDtoBuilder.class
 com/bayzat/bayztracker/enumeration/NotificationStatus.class
 com/bayzat/bayztracker/dto/response/AlertResponse.class
 com/bayzat/bayztracker/model/User.class
@@ -36,8 +35,6 @@ com/bayzat/bayztracker/enumeration/UnsupportedCurrencyType.class
 com/bayzat/bayztracker/controller/CurrencyController.class
 com/bayzat/bayztracker/config/jwt/JwtAuthTokenFilter.class
 com/bayzat/bayztracker/model/BaseEntity.class
-com/bayzat/bayztracker/controller/TestController.class
-com/bayzat/bayztracker/exception/UnexpectedEventException.class
 com/bayzat/bayztracker/model/User$UserBuilder.class
 com/bayzat/bayztracker/dto/response/JwtUser$JwtUserBuilder.class
 com/bayzat/bayztracker/enumeration/UserType.class
@@ -53,7 +50,6 @@ com/bayzat/bayztracker/dto/request/AddUserRequestDto.class
 com/bayzat/bayztracker/dto/response/CurrencyResponse.class
 com/bayzat/bayztracker/dto/request/AddAlertRequestDto$AddAlertRequestDtoBuilder.class
 com/bayzat/bayztracker/task/ScheduledTask.class
-com/bayzat/bayztracker/dto/request/RemoveCurrencyRequestDto.class
 com/bayzat/bayztracker/service/UserServiceImpl.class
 com/bayzat/bayztracker/service/NotificationServiceImpl.class
 com/bayzat/bayztracker/controller/AuthController.class

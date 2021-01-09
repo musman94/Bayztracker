@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="BayzTrackerDB" uuid="d983e428-2d14-40ff-b003-65e813547b30">
+    <data-source source="LOCAL" name="bayztracker-db" uuid="743b3c0b-3c9f-4c47-8010-31ef4ccb93b4">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>

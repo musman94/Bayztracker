@@ -21,7 +21,6 @@
 /Users/usman/Desktop/Sem/bayzat/BayzTracker/src/main/java/com/bayzat/bayztracker/service/NotificationServiceImpl.java
 /Users/usman/Desktop/Sem/bayzat/BayzTracker/src/main/java/com/bayzat/bayztracker/dto/request/AddCurrencyRequestDto.java
 /Users/usman/Desktop/Sem/bayzat/BayzTracker/src/main/java/com/bayzat/bayztracker/BayzTrackerApp.java
-/Users/usman/Desktop/Sem/bayzat/BayzTracker/src/main/java/com/bayzat/bayztracker/dto/request/RemoveCurrencyRequestDto.java
 /Users/usman/Desktop/Sem/bayzat/BayzTracker/src/main/java/com/bayzat/bayztracker/exception/NotAuthorizedException.java
 /Users/usman/Desktop/Sem/bayzat/BayzTracker/src/main/java/com/bayzat/bayztracker/dto/response/AlertResponse.java
 /Users/usman/Desktop/Sem/bayzat/BayzTracker/src/main/java/com/bayzat/bayztracker/enumeration/UserType.java
@@ -38,7 +37,6 @@
 /Users/usman/Desktop/Sem/bayzat/BayzTracker/src/main/java/com/bayzat/bayztracker/model/Response.java
 /Users/usman/Desktop/Sem/bayzat/BayzTracker/src/main/java/com/bayzat/bayztracker/constant/ExceptionMessageConstants.java
 /Users/usman/Desktop/Sem/bayzat/BayzTracker/src/main/java/com/bayzat/bayztracker/task/ScheduledTask.java
-/Users/usman/Desktop/Sem/bayzat/BayzTracker/src/main/java/com/bayzat/bayztracker/controller/TestController.java
 /Users/usman/Desktop/Sem/bayzat/BayzTracker/src/main/java/com/bayzat/bayztracker/exception/NotFoundException.java
 /Users/usman/Desktop/Sem/bayzat/BayzTracker/src/main/java/com/bayzat/bayztracker/helper/ResponseHelper.java
 /Users/usman/Desktop/Sem/bayzat/BayzTracker/src/main/java/com/bayzat/bayztracker/repository/AlertRepository.java
@@ -46,7 +44,6 @@
 /Users/usman/Desktop/Sem/bayzat/BayzTracker/src/main/java/com/bayzat/bayztracker/dto/response/JwtUser.java
 /Users/usman/Desktop/Sem/bayzat/BayzTracker/src/main/java/com/bayzat/bayztracker/service/CurrencyServiceImpl.java
 /Users/usman/Desktop/Sem/bayzat/BayzTracker/src/main/java/com/bayzat/bayztracker/config/jwt/JwtAuthEntryPoint.java
-/Users/usman/Desktop/Sem/bayzat/BayzTracker/src/main/java/com/bayzat/bayztracker/exception/UnexpectedEventException.java
 /Users/usman/Desktop/Sem/bayzat/BayzTracker/src/main/java/com/bayzat/bayztracker/constant/MessageConstants.java
 /Users/usman/Desktop/Sem/bayzat/BayzTracker/src/main/java/com/bayzat/bayztracker/dto/response/UserResponse.java
 /Users/usman/Desktop/Sem/bayzat/BayzTracker/src/main/java/com/bayzat/bayztracker/service/UserService.java
