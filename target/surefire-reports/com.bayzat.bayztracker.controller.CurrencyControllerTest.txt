@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.bayzat.bayztracker.controller.CurrencyControllerTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0.654 s - in com.bayzat.bayztracker.controller.CurrencyControllerTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0.673 s - in com.bayzat.bayztracker.controller.CurrencyControllerTest
