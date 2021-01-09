@@ -5,14 +5,16 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class JwtUser {
-    private final UserResponse userDetails;
-    private final JwtResponse jwt;
+    private  UserResponse userDetails;
+    private  JwtResponse jwt;
 
     public static JwtUser from(User user, JwtResponse jwt) {
         return new JwtUser(UserResponse.of(user), jwt);

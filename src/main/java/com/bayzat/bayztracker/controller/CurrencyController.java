@@ -2,7 +2,6 @@ package com.bayzat.bayztracker.controller;
 
 import com.bayzat.bayztracker.constant.MessageConstants;
 import com.bayzat.bayztracker.dto.request.AddCurrencyRequestDto;
-import com.bayzat.bayztracker.dto.request.RemoveCurrencyRequestDto;
 import com.bayzat.bayztracker.dto.response.CurrencyResponse;
 import com.bayzat.bayztracker.helper.ResponseHelper;
 import com.bayzat.bayztracker.service.CurrencyService;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.Collection;
-import java.util.List;
 
 @RestController
 @CrossOrigin("*")
@@ -34,18 +32,17 @@ public class CurrencyController {
     }
 
     @PreAuthorize("hasAuthority('ADMIN')")
-    @RequestMapping(value = "/remove", method = RequestMethod.POST)
+    @RequestMapping(value = "/remove", method = RequestMethod.DELETE)
     public ResponseEntity removeCurrency(@Valid @RequestParam String name) {
 
-        currencyService.removeCurrency(name);
-        return responseHelper.okResponse();
+        CurrencyResponse currency = currencyService.removeCurrency(name);
+        return responseHelper.okResponse(currency, MessageConstants.REMOVE_CURRENCY_SUCCESSFUL_MESSAGE);
     }
-
 
     @RequestMapping(value = "/get", method = RequestMethod.GET)
     public ResponseEntity getCurrency(@Valid @RequestParam String name) {
 
-        CurrencyResponse currency = currencyService.getCurrency(name);
+        CurrencyResponse currency = currencyService.getCurrencyByName(name);
         return responseHelper.okResponse(currency);
     }
 

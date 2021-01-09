@@ -1,6 +1,5 @@
 package com.bayzat.bayztracker.dto.request;
 
-import com.bayzat.bayztracker.enumeration.AlertStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

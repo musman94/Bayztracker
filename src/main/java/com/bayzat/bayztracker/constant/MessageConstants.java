@@ -6,6 +6,7 @@ import lombok.experimental.UtilityClass;
 public class MessageConstants {
 
     public static final String ADD_CURRENCY_SUCCESSFUL_MESSAGE = "Currency successfully added";
+    public static final String REMOVE_CURRENCY_SUCCESSFUL_MESSAGE = "Currency successfully deleted";
     public static final String ADD_ALERT_SUCCESSFUL_MESSAGE = "Alert successfully added";
     public static final String ACK_ALERT_SUCCESSFUL_MESSAGE = "Alert successfully acknowledged";
     public static final String CANCEL_ALERT_SUCCESSFUL_MESSAGE = "Alert successfully cancelled";

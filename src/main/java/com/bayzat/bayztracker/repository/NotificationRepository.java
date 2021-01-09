@@ -1,7 +1,6 @@
 package com.bayzat.bayztracker.repository;
 
 import com.bayzat.bayztracker.enumeration.NotificationStatus;
-import com.bayzat.bayztracker.model.Currency;
 import com.bayzat.bayztracker.model.Notification;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;

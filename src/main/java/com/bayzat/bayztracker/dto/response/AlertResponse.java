@@ -1,33 +1,32 @@
 package com.bayzat.bayztracker.dto.response;
 
 import com.bayzat.bayztracker.enumeration.AlertStatus;
-import com.bayzat.bayztracker.enumeration.UserType;
 import com.bayzat.bayztracker.model.Alert;
-import com.bayzat.bayztracker.model.Currency;
-import com.bayzat.bayztracker.model.User;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public final class AlertResponse {
 
-    public final Long id;
+    private Long id;
 
-    public final Long userId;
+    private Long userId;
 
-    public final Long currencyId;
+    private Long currencyId;
 
-    public final Double targetValue;
+    private Double targetValue;
 
-    public final AlertStatus alertStatus;
+    private AlertStatus alertStatus;
 
     public static AlertResponse of(Alert alert) {
         AlertResponseBuilder builder = AlertResponse.builder()

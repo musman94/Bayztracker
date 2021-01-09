@@ -3,6 +3,7 @@ package com.bayzat.bayztracker.service;
 import com.bayzat.bayztracker.config.PasswordHelper;
 import com.bayzat.bayztracker.config.jwt.JwtProvider;
 import com.bayzat.bayztracker.dto.request.AddUserRequestDto;
+import com.bayzat.bayztracker.dto.request.LoginRequestDto;
 import com.bayzat.bayztracker.dto.response.JwtResponse;
 import com.bayzat.bayztracker.dto.response.JwtUser;
 import com.bayzat.bayztracker.dto.response.UserResponse;
@@ -10,6 +11,7 @@ import com.bayzat.bayztracker.exception.InvalidParameterException;
 import com.bayzat.bayztracker.exception.NotFoundException;
 import com.bayzat.bayztracker.model.User;
 import com.bayzat.bayztracker.repository.UserRepository;
+import com.bayzat.bayztracker.constant.ExceptionMessageConstants;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -20,8 +22,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.Optional;
-
-import static com.bayzat.bayztracker.constant.ExceptionMessageConstants.*;
 
 @Service
 @Slf4j
@@ -42,9 +42,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public JwtUser login(String email, String pass) {
+    public JwtUser login(LoginRequestDto request) {
         Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(email, pass)
+                new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
         );
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -69,7 +69,7 @@ public class UserServiceImpl implements UserService {
             return UserResponse.of(user);
         }
 
-        throw new InvalidParameterException(USER_ALREADY_EXISTS_MESSAGE);
+        throw new InvalidParameterException(ExceptionMessageConstants.USER_ALREADY_EXISTS_MESSAGE);
     }
 
     @Override
@@ -78,7 +78,7 @@ public class UserServiceImpl implements UserService {
         Optional<User> user = userRepository.findById(id);
 
         if(user.isEmpty()) {
-            throw new NotFoundException(USER_NOT_FOUND_MESSAGE);
+            throw new NotFoundException(ExceptionMessageConstants.USER_NOT_FOUND_MESSAGE);
         }
 
         return user.get();

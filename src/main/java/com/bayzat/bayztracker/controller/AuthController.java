@@ -8,7 +8,6 @@ import com.bayzat.bayztracker.helper.ResponseHelper;
 import com.bayzat.bayztracker.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -25,7 +24,7 @@ public class AuthController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity login(@Valid @RequestBody LoginRequestDto requestDto) {
-        JwtUser user = userService.login(requestDto.getEmail(), requestDto.getPassword());
+        JwtUser user = userService.login(requestDto);
         return responseHelper.okResponse(user);
     }
 

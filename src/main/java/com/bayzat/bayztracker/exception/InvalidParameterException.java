@@ -1,15 +1,15 @@
 package com.bayzat.bayztracker.exception;
 
-import static com.bayzat.bayztracker.constant.ExceptionMessageConstants.INVALID_PARAMETER_MESSAGE;
+import com.bayzat.bayztracker.constant.ExceptionMessageConstants;
 
 public class InvalidParameterException extends RuntimeException {
 
     public InvalidParameterException() {
-        super(INVALID_PARAMETER_MESSAGE);
+        super(ExceptionMessageConstants.INVALID_PARAMETER_MESSAGE);
     }
 
     public InvalidParameterException(Throwable cause) {
-        super(INVALID_PARAMETER_MESSAGE, cause);
+        super(ExceptionMessageConstants.INVALID_PARAMETER_MESSAGE, cause);
     }
 
     public InvalidParameterException(String message) {

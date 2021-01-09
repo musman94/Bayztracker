@@ -1,7 +1,6 @@
 package com.bayzat.bayztracker.service;
 
 import com.bayzat.bayztracker.dto.request.AddCurrencyRequestDto;
-import com.bayzat.bayztracker.dto.request.RemoveCurrencyRequestDto;
 import com.bayzat.bayztracker.dto.response.CurrencyResponse;
 import com.bayzat.bayztracker.enumeration.UnsupportedCurrencyType;
 import com.bayzat.bayztracker.exception.NotFoundException;
@@ -13,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -47,26 +45,20 @@ public class CurrencyServiceImpl implements CurrencyService {
 
     @Override
     @Transactional
-    public void removeCurrency(String name) {
-        Optional<Currency> currency = currencyRepository.findByName(name);
+    public CurrencyResponse removeCurrency(String name) {
+        Currency currency = checkCurrencyExistsByName(name);
 
-        if(currency.isEmpty()) {
-            throw new NotFoundException(CURRENCY_NOT_FOUND_MESSAGE);
-        }
+        currencyRepository.delete(currency);
 
-        currencyRepository.delete(currency.get());
+        return CurrencyResponse.of(currency);
     }
 
     @Override
     @Transactional(readOnly = true)
-    public CurrencyResponse getCurrency(String name) {
-        Optional<Currency> currency = currencyRepository.findByName(name);
+    public CurrencyResponse getCurrencyByName(String name) {
+        Currency currency = checkCurrencyExistsByName(name);
 
-        if(currency.isEmpty()) {
-            throw new NotFoundException(CURRENCY_NOT_FOUND_MESSAGE);
-        }
-
-        return CurrencyResponse.of(currency.get());
+        return CurrencyResponse.of(currency);
     }
 
     @Override
@@ -87,6 +79,16 @@ public class CurrencyServiceImpl implements CurrencyService {
         List<Currency> currencyList = currencyRepository.findAll();
 
         return CurrencyResponse.of(currencyList);
+    }
+
+    private Currency checkCurrencyExistsByName(String name) {
+        Optional<Currency> currency = currencyRepository.findByName(name);
+
+        if(currency.isEmpty()) {
+            throw new NotFoundException(CURRENCY_NOT_FOUND_MESSAGE);
+        }
+
+        return currency.get();
     }
 
     private boolean checkValidCurrencyType(String currencySymbol) {

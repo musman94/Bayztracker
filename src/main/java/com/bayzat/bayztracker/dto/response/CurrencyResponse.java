@@ -5,22 +5,24 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CurrencyResponse {
-    public final Long id;
+    private Long id;
 
-    public final String name;
+    private String name;
 
-    public final String symbol;
+    private String symbol;
 
-    public final Double currentPrice;
+    private Double currentPrice;
 
     public static CurrencyResponse of(Currency currency) {
         CurrencyResponseBuilder builder = CurrencyResponse.builder()

@@ -6,26 +6,27 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Collection;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public final class UserResponse {
 
-    public final Long id;
+    private Long id;
 
-    public final String name;
+    private String name;
 
-    public final String surname;
+    private String surname;
 
-    public final String email;
+    private String email;
 
-    public final UserType type;
+    private UserType type;
 
     public static UserResponse of(User user) {
         UserResponseBuilder builder = UserResponse.builder()
