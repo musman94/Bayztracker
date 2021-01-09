@@ -1,4 +1,3 @@
-# Spring Boot initialConfiguration
 spring:
   jpa:
     show-sql: false
@@ -11,10 +10,7 @@ spring:
           use_jdbc_metadata_defaults: false
         default_schema: public
     hibernate:
-      ddl-auto: create
-
-    #initialization-mode: always
-    #schema: classpath:/schema.sql
+      ddl-auto: update
 
   profiles:
     active: ${PROFILE:prod}
@@ -31,6 +27,5 @@ logging:
     org.springframework: info
     org.hibernate.SQL: info
 
-# Server initialConfiguration
 server:
   port: 8080

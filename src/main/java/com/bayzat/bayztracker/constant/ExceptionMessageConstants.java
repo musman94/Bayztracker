@@ -5,13 +5,10 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class ExceptionMessageConstants {
 
-    public static final String INVALID_PARAMETER_MESSAGE = "Invalid parameters";
-    public static final String NOT_AUTHORIZED_MESSAGE = "NOT_AUTHORIZED_MESSAGE";
+    public static final String NOT_AUTHORIZED_MESSAGE = "Not authorized";
     public static final String ALERT_NOT_FOUND_MESSAGE = "Alert not found";
     public static final String CURRENCY_NOT_FOUND_MESSAGE = "Currency not found";
     public static final String USER_NOT_FOUND_MESSAGE = "User not found";
-
-    public static final String UNEXPECTED_EVENT_MESSAGE = "UNEXPECTED_EVENT_MESSAGE";
     public static final String UNSUPPORTED_CURRENCY_MESSAGE = "This currency is not supported";
     public static final String CANNOT_BE_ACKED_MESSAGE = "Only a triggered alert can be acknowledged";
     public static final String CANNOT_BE_CANCELED_MESSAGE = "Alert cannot be cancelled once it has been triggered";
